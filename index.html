@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Webtalk.be — Ontzorgde, professionele websites</title>
+  <meta name="description" content="Webtalk.be bouwt professionele websites voor kmo’s in Vlaanderen. Volledig ontzorgd: hosting, onderhoud, updates en support inbegrepen. Rechtstreeks contact met Ben via e-mail: ben@webtalk.be." />
+  <meta property="og:title" content="Webtalk.be — Ontzorgde, professionele websites" />
+  <meta property="og:description" content="Professioneel en volledig ontzorgd. Hosting, onderhoud, updates en support inbegrepen. Rechtstreeks contact met Ben." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://webtalk.be/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Ctext x='50%25' y='54%25' font-size='40' text-anchor='middle' fill='white' font-family='Arial'%3EW%3C/text%3E%3C/svg%3E" />
+  <link rel="canonical" href="https://webtalk.be/" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#2563eb', // blauw
+              dark: '#1e40af'
+            },
+            cta: {
+              DEFAULT: '#f97316', // oranje
+              dark: '#ea580c'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-white">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#top" class="flex items-center gap-2 font-bold text-lg">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-white">W</span>
+          <span>Webtalk.be</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="#why" class="hover:text-brand">Waarom Webtalk?</a>
+          <a href="#services" class="hover:text-brand">Diensten</a>
+          <a href="#faq" class="hover:text-brand">FAQ</a>
+          <a href="#contact" class="hover:text-brand">Contact</a>
+          <a href="#contact" class="inline-flex items-center rounded-md bg-cta px-4 py-2 text-white font-semibold shadow hover:bg-cta-dark">
+            Contacteer Ben
+          </a>
+        </nav>
+        <button id="mobileMenuBtn" class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-100" aria-label="Open menu">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden pb-4">
+        <div class="flex flex-col gap-2">
+          <a href="#why" class="px-2 py-2 rounded hover:bg-slate-100">Waarom Webtalk?</a>
+          <a href="#services" class="px-2 py-2 rounded hover:bg-slate-100">Diensten</a>
+          <a href="#faq" class="px-2 py-2 rounded hover:bg-slate-100">FAQ</a>
+          <a href="#contact" class="px-2 py-2 rounded hover:bg-slate-100">Contact</a>
+          <a href="#contact" class="mt-2 inline-flex items-center justify-center rounded-md bg-cta px-4 py-2 text-white font-semibold shadow hover:bg-cta-dark">
+            Contacteer Ben
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-blue-50 to-white"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-16">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
+              Jouw professionele website, volledig ontzorgd
+            </h1>
+            <p class="mt-5 text-lg text-slate-600">
+              Betaalbaar, gebruiksvriendelijk en volledig ontzorgd. Eén vast aanspreekpunt, altijd via e-mail.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+              <a href="#contact" class="inline-flex items-center justify-center rounded-md bg-cta px-6 py-3 text-white font-semibold shadow hover:bg-cta-dark">
+                Contacteer Ben
+              </a>
+              <a href="mailto:ben@webtalk.be" class="inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold text-brand ring-1 ring-brand/20 hover:bg-blue-50">
+                Mail naar Ben: ben@webtalk.be
+              </a>
+            </div>
+            <div class="mt-6 flex items-center gap-4 text-sm text-slate-500">
+              <div class="flex items-center gap-2">
+                <svg class="h-5 w-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Hosting, beveiliging en technisch onderhoud inbegrepen
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="h-5 w-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 7h18M5 10h14M7 14h10M9 18h6" />
+                </svg>
+                Eenvoudige, duidelijke communicatie via e-mail
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="relative">
+              <div class="h-96 sm:h-[32rem]"></div>
+              <img src="ben.png" alt="Ben van Webtalk.be" class="absolute bottom-0 right-0 sm:right-4 h-96 sm:h-[32rem] w-auto object-contain drop-shadow-xl pointer-events-none select-none z-10" />
+              <div class="absolute inset-0 p-4 sm:p-6 flex items-end z-20">
+                <div class="bg-white/90 backdrop-blur rounded-lg p-3 sm:p-4 shadow max-w-[22rem]">
+                  <p class="font-semibold text-slate-900">Rechtstreeks contact met Ben</p>
+                  <p class="text-sm text-slate-600 mt-1">Stuur een e-mail naar <a href="mailto:ben@webtalk.be" class="text-brand underline underline-offset-2">ben@webtalk.be</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Waarom Webtalk -->
+    <section id="why" class="py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl font-bold tracking-tight text-slate-900">Waarom Webtalk?</h2>
+          <p class="mt-3 text-slate-600">Professioneel, volledig ontzorgd en transparant. Rechtstreeks contact met Ben.</p>
+        </div>
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-xl border border-slate-200 p-6">
+            <div class="h-10 w-10 rounded-lg bg-blue-50 text-brand flex items-center justify-center mb-4">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4v6h8v-6c0-2.21-1.79-4-4-4z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900">Direct contact</h3>
+            <p class="mt-2 text-slate-600">Altijd rechtstreeks met Ben via e-mail.</p>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-6">
+            <div class="h-10 w-10 rounded-lg bg-blue-50 text-brand flex items-center justify-center mb-4">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7l9-4 9 4-9 4-9-4zm0 6l9 4 9-4" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900">Professioneel</h3>
+            <p class="mt-2 text-slate-600">Moderne, responsive websites die vertrouwen wekken.</p>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-6">
+            <div class="h-10 w-10 rounded-lg bg-blue-50 text-brand flex items-center justify-center mb-4">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V7a2 2 0 00-2-2h-5l-2-2H6a2 2 0 00-2 2v8" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900">Ontzorgd</h3>
+            <p class="mt-2 text-slate-600">Hosting, updates en beveiliging inbegrepen.</p>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-6">
+            <div class="h-10 w-10 rounded-lg bg-blue-50 text-brand flex items-center justify-center mb-4">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h6" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900">Transparant</h3>
+            <p class="mt-2 text-slate-600">Eén aanspreekpunt, duidelijke communicatie via e-mail.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-16 sm:py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl font-bold tracking-tight text-slate-900">Wat nemen we voor jou uit handen?</h2>
+          <p class="mt-3 text-slate-600">Alles wat je nodig hebt voor een sterke online aanwezigheid.</p>
+        </div>
+        <div class="mt-8 grid gap-6 lg:grid-cols-2">
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="h-6 w-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Professioneel webdesign</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="h-6 w-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-7 4h8m-9-8h10" />
+              </svg>
+              <span>Mobile friendly (responsive)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="h-6 w-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16v12H4z" />
+              </svg>
+              <span>Wijzigingen via e-mail — wij passen tekst en foto’s voor je aan (geen CMS/logins). Aanpassingen aan €50/uur excl. btw.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="h-6 w-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 01-8 0" />
+              </svg>
+              <span>Eenvoudig contact via e-mail — geen formulieren.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="h-6 w-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11V7m0 0V3m0 4l-2 2m2-2l2 2M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2h-5l-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <span>Beveiligde hosting &amp; onderhoud</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="h-6 w-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16h6" />
+              </svg>
+              <span>Support via e-mail</span>
+            </li>
+          </ul>
+          <div class="rounded-xl border border-dashed border-slate-300 p-6 bg-white">
+            <p class="font-semibold text-slate-900">Klaar om te starten?</p>
+            <p class="mt-2 text-slate-600">Mail je wensen en materiaal naar <a href="mailto:ben@webtalk.be" class="text-brand underline underline-offset-2">ben@webtalk.be</a>. We begeleiden je stap voor stap.</p>
+            <a href="#contact" class="mt-4 inline-flex items-center rounded-md bg-brand px-4 py-2 text-white font-semibold hover:bg-brand-dark">Contacteer Ben</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+
+    
+
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl font-bold tracking-tight text-slate-900">Prijzen &amp; pakketten</h2>
+          <p class="mt-3 text-slate-600">Eenvoudig en transparant. Geen verborgen kosten.</p>
+        </div>
+        <div class="mt-8 grid gap-6 lg:grid-cols-3">
+          <div class="lg:col-span-2">
+            <div class="rounded-2xl border border-slate-200 p-6 sm:p-8 bg-white">
+              <h3 class="text-2xl font-bold text-slate-900">Basis Website</h3>
+              <ul class="mt-4 space-y-2 text-slate-700">
+                <li class="flex gap-2 items-start">
+                  <svg class="h-5 w-5 text-brand mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Inclusief design, responsive; inhoudelijke aanpassingen op aanvraag via e-mail aan €50/uur excl. btw (geen CMS/logins)
+                </li>
+                <li class="flex gap-2 items-start">
+                  <svg class="h-5 w-5 text-brand mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Hosting, beveiliging en technisch onderhoud
+                </li>
+                <li class="flex gap-2 items-start">
+                  <svg class="h-5 w-5 text-brand mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Support via e-mail
+                </li>
+              </ul>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-lg bg-slate-50 p-4">
+                  <p class="text-sm text-slate-500">Opstart</p>
+                  <p class="font-semibold text-slate-900">Geen opstartkost</p>
+                </div>
+                <div class="rounded-lg bg-slate-50 p-4">
+                  <p class="text-sm text-slate-500">Opzeg</p>
+                  <p class="font-semibold text-slate-900">Jaarlijks opzegbaar, 1 maand opzegtermijn</p>
+                </div>
+              </div>
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <a href="#contact" class="inline-flex items-center justify-center rounded-md bg-cta px-6 py-3 text-white font-semibold shadow hover:bg-cta-dark">
+                  Ik wil starten
+                </a>
+                <a href="mailto:ben@webtalk.be" class="inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold text-brand ring-1 ring-brand/20 hover:bg-blue-50">
+                  Mail: ben@webtalk.be
+                </a>
+              </div>
+            </div>
+          </div>
+          <aside class="rounded-2xl border border-dashed border-slate-300 p-6 bg-white">
+            <h4 class="font-semibold text-slate-900">Toekomstige uitbreidingen</h4>
+            <ul class="mt-3 list-disc list-inside text-slate-600 space-y-1">
+              <li>Webshop add-on</li>
+              <li>Logo &amp; huisstijl</li>
+              <li>SEO boost</li>
+            </ul>
+            <p class="mt-3 text-sm text-slate-500">Vraag gerust naar de mogelijkheden.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16 sm:py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl font-bold tracking-tight text-slate-900">Veelgestelde vragen</h2>
+          <p class="mt-3 text-slate-600">Kort, helder en to the point.</p>
+        </div>
+        <div class="mt-8 grid gap-4">
+          <details class="group rounded-xl border border-slate-200 bg-white p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between">
+              <span class="font-semibold text-slate-900">Kan ik zelf teksten en foto’s aanpassen?</span>
+              <span class="ml-4 text-slate-400 group-open:rotate-180 transition transform">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="mt-3 text-slate-600">
+              Wij doen de aanpassingen voor jou. Stuur je wijzigingen naar <a href="mailto:ben@webtalk.be" class="text-brand underline underline-offset-2">ben@webtalk.be</a> — geen CMS of logins nodig.
+            </div>
+          </details>
+          <details class="group rounded-xl border border-slate-200 bg-white p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between">
+              <span class="font-semibold text-slate-900">Zijn er verborgen kosten?</span>
+              <span class="ml-4 text-slate-400 group-open:rotate-180 transition transform">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="mt-3 text-slate-600">
+              Nee. Alles wat hierboven staat is inbegrepen. We communiceren helder en zonder verrassingen.
+            </div>
+          </details>
+          <details class="group rounded-xl border border-slate-200 bg-white p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between">
+              <span class="font-semibold text-slate-900">Hoe gebeurt de communicatie?</span>
+              <span class="ml-4 text-slate-400 group-open:rotate-180 transition transform">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="mt-3 text-slate-600">
+              Enkel via e-mail. Stuur je vragen en materiaal naar <a href="mailto:ben@webtalk.be" class="text-brand underline underline-offset-2">ben@webtalk.be</a>.
+            </div>
+          </details>
+          <details class="group rounded-xl border border-slate-200 bg-white p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between">
+              <span class="font-semibold text-slate-900">Wat kost een wijziging?</span>
+              <span class="ml-4 text-slate-400 group-open:rotate-180 transition transform">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="mt-3 text-slate-600">
+              Aanpassingen gebeuren aan €50/uur excl. btw. Mail je verzoek naar <a href="mailto:ben@webtalk.be" class="text-brand underline underline-offset-2">ben@webtalk.be</a>.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl font-bold tracking-tight text-slate-900">Contact</h2>
+          <p class="mt-3 text-slate-600">Alle communicatie verloopt eenvoudig via e-mail. Stuur je bericht naar ben@webtalk.be.</p>
+        </div>
+        <div class="mt-8">
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+            <p class="text-lg text-slate-700">Alle aanvragen en wijzigingen lopen via e-mail. Stuur je bericht naar <a href="mailto:ben@webtalk.be" class="text-brand underline underline-offset-2">ben@webtalk.be</a>. Geen formulieren, geen logins — gewoon e-mail.</p>
+            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+              <a href="mailto:ben@webtalk.be?subject=Nieuwe%20website%20via%20Webtalk.be" class="inline-flex items-center justify-center rounded-md bg-cta px-6 py-3 text-white font-semibold shadow hover:bg-cta-dark">Mail naar Ben: ben@webtalk.be</a>
+              <a href="#why" class="inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold text-brand ring-1 ring-brand/20 hover:bg-blue-50">Ontdek onze aanpak</a>
+            </div>
+            <p class="mt-3 text-sm text-slate-500">We antwoorden meestal binnen 1 werkdag.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2 font-bold text-slate-900">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-white">W</span>
+          <span>Webtalk.be</span>
+        </div>
+        <div class="text-sm text-slate-500">
+          © <span id="year"></span> Webtalk.be — Ontzorgde, professionele websites. Alle rechten voorbehouden.
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="#contact" class="inline-flex items-center rounded-md bg-cta px-4 py-2 text-white font-semibold shadow hover:bg-cta-dark">
+            Contacteer Ben
+          </a>
+          <a href="mailto:ben@webtalk.be" class="text-brand hover:underline">ben@webtalk.be</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- SEO structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Webtalk.be",
+    "url": "https://webtalk.be/",
+    "logo": "https://webtalk.be/favicon.svg",
+    "sameAs": [],
+    "description": "Webtalk.be bouwt professionele websites voor kmo’s in Vlaanderen. Volledig ontzorgd met hosting, onderhoud, updates en support. Rechtstreeks contact met Ben."
+  }
+  </script>
+</body>
+</html>
