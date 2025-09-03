@@ -34,11 +34,91 @@
   </script>
   <style>
     html { scroll-behavior: smooth; }
+    /* Animated gradient mesh background */
+    .mesh-bg {
+      position: absolute;
+      inset: -25%;
+      background:
+        radial-gradient(40vmax 40vmax at 10% 20%, rgba(37,99,235,0.18), transparent 50%),
+        radial-gradient(35vmax 35vmax at 90% 10%, rgba(234,88,12,0.18), transparent 55%),
+        radial-gradient(30vmax 30vmax at 20% 90%, rgba(16,185,129,0.16), transparent 55%),
+        radial-gradient(28vmax 28vmax at 80% 80%, rgba(99,102,241,0.14), transparent 55%);
+      filter: blur(10px);
+      animation: meshMove 20s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes meshMove {
+      0%   { transform: translate3d(-1%, -1%, 0) scale(1); }
+      100% { transform: translate3d(1%, 1%, 0) scale(1.05); }
+    }
+    /* Glowing blobs */
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(30px); opacity: 0.6; mix-blend-mode: plus-lighter;
+      will-change: transform;
+    }
+    .blob-1 { width: 420px; height: 420px; background: radial-gradient(circle at 30% 30%, #60a5fa, transparent 60%); top: -60px; left: -60px; animation: floatXY 16s ease-in-out infinite; }
+    .blob-2 { width: 500px; height: 500px; background: radial-gradient(circle at 70% 70%, #fb923c, transparent 60%); bottom: -120px; right: -80px; animation: floatXY 22s ease-in-out infinite reverse; }
+    @keyframes floatXY {
+      0% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(20px, -12px, 0); }
+      100% { transform: translate3d(-8px, 16px, 0); }
+    }
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(90deg, #2563eb, #ea580c, #10b981, #2563eb);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: hueShift 8s ease-in-out infinite;
+    }
+    @keyframes hueShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* CTA shine */
+    .btn-shine { position: relative; overflow: hidden; }
+    .btn-shine::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.35) 50%, transparent 80%);
+      transform: translateX(-120%); pointer-events: none;
+    }
+    .btn-shine:hover::before { transform: translateX(120%); transition: transform 800ms ease; }
+    /* Card glow */
+    .glow-card { transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease; }
+    .glow-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,99,235,0.15), 0 6px 12px rgba(2,6,23,0.08); border-color: rgba(37,99,235,0.35); }
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 700ms ease, transform 700ms ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    /* Slow float */
+    .float-slow { animation: floatY 6s ease-in-out infinite; }
+    @keyframes floatY { 0% { transform: translateY(0) } 50% { transform: translateY(-8px) } 100% { transform: translateY(0) } }
+    /* Scroll progress bar */
+    #scrollProgress { transition: width 80ms linear; }
+    /* Back to top button */
+    #backToTop {
+      position: fixed; right: 1rem; bottom: 1rem; z-index: 50;
+      opacity: 0; transform: translateY(8px); pointer-events: none;
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+    #backToTop.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    /* Confetti */
+    .confetti {
+      position: fixed; width: 10px; height: 14px; top: 0; left: 0; z-index: 60;
+      will-change: transform, opacity; opacity: 0.9; border-radius: 2px;
+      animation: confettiFall 1200ms cubic-bezier(.2,.7,.1,1) forwards;
+    }
+    @keyframes confettiFall {
+      0% { transform: translate3d(var(--x,0), calc(var(--y,0) - 20px), 0) rotate(0deg); opacity: 1; }
+      100% { transform: translate3d(calc(var(--x,0) + var(--dx,0)), calc(var(--y,0) + 160px), 0) rotate(340deg); opacity: 0; }
+    }
   </style>
 </head>
 <body class="antialiased text-slate-800 bg-white">
   <!-- Header / Nav -->
-  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <a href="#top" class="flex items-center gap-2 font-bold text-lg">
@@ -50,7 +130,7 @@
           <a href="#services" class="hover:text-brand">Diensten</a>
           <a href="#faq" class="hover:text-brand">FAQ</a>
           <a href="#contact" class="hover:text-brand">Contact</a>
-          <a href="#contact" class="inline-flex items-center rounded-md bg-cta px-4 py-2 text-white font-semibold shadow hover:bg-cta-dark">
+          <a href="#contact" class="inline-flex items-center rounded-md bg-cta px-4 py-2 text-white font-semibold shadow hover:bg-cta-dark btn-shine">
             Contacteer Ben
           </a>
         </nav>
@@ -67,11 +147,14 @@
           <a href="#services" class="px-2 py-2 rounded hover:bg-slate-100">Diensten</a>
           <a href="#faq" class="px-2 py-2 rounded hover:bg-slate-100">FAQ</a>
           <a href="#contact" class="px-2 py-2 rounded hover:bg-slate-100">Contact</a>
-          <a href="#contact" class="mt-2 inline-flex items-center justify-center rounded-md bg-cta px-4 py-2 text-white font-semibold shadow hover:bg-cta-dark">
+          <a href="#contact" class="mt-2 inline-flex items-center justify-center rounded-md bg-cta px-4 py-2 text-white font-semibold shadow hover:bg-cta-dark btn-shine">
             Contacteer Ben
           </a>
         </div>
       </div>
+    </div>
+    <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-0.5">
+      <div id="scrollProgress" class="h-full w-0 bg-gradient-to-r from-brand to-cta"></div>
     </div>
   </header>
 
@@ -79,17 +162,27 @@
     <!-- Hero -->
     <section class="relative overflow-hidden">
       <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-blue-50 to-white"></div>
+      <!-- Spectacular animated background -->
+      <div aria-hidden="true" class="absolute inset-0 -z-10 pointer-events-none">
+        <div class="mesh-bg"></div>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+      </div>
+
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-16">
         <div class="grid lg:grid-cols-2 gap-10 items-center">
           <div>
             <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
-              Jouw professionele website, volledig ontzorgd
+              Jouw professionele website, <span class="gradient-text">volledig ontzorgd</span>
             </h1>
-            <p class="mt-5 text-lg text-slate-600">
+            <p class="mt-3 text-base sm:text-lg text-slate-600">
               Betaalbaar, gebruiksvriendelijk en volledig ontzorgd. Eén vast aanspreekpunt, altijd via e-mail.
             </p>
+            <p class="mt-3 text-sm sm:text-base text-slate-500">
+              <span id="tw" class="font-semibold gradient-text"></span>
+            </p>
             <div class="mt-8 flex flex-col sm:flex-row gap-3">
-              <a href="#contact" class="inline-flex items-center justify-center rounded-md bg-cta px-6 py-3 text-white font-semibold shadow hover:bg-cta-dark">
+              <a href="#contact" class="inline-flex items-center justify-center rounded-md bg-cta px-6 py-3 text-white font-semibold shadow hover:bg-cta-dark btn-shine">
                 Contacteer Ben
               </a>
               <a href="mailto:ben@webtalk.be" class="inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold text-brand ring-1 ring-brand/20 hover:bg-blue-50">
@@ -116,9 +209,10 @@
           <div class="relative">
             <div class="relative">
               <div class="h-96 sm:h-[32rem]"></div>
-              <img src="ben.png" alt="Ben van Webtalk.be" class="absolute bottom-0 right-0 sm:right-4 h-96 sm:h-[32rem] w-auto object-contain drop-shadow-xl pointer-events-none select-none z-10" />
+              <div class="absolute bottom-6 right-6 w-40 h-40 rounded-full bg-gradient-to-tr from-brand/20 to-cta/20 blur-2xl z-[5]"></div>
+              <img src="ben.png" alt="Ben van Webtalk.be" data-parallax data-speed="8" class="absolute bottom-0 right-0 sm:right-4 h-96 sm:h-[32rem] w-auto object-contain drop-shadow-xl pointer-events-none select-none z-10 float-slow will-change-transform" />
               <div class="absolute inset-0 p-4 sm:p-6 flex items-end z-20">
-                <div class="bg-white/90 backdrop-blur rounded-lg p-3 sm:p-4 shadow max-w-[22rem]">
+                <div class="bg-white/90 backdrop-blur rounded-lg p-3 sm:p-4 shadow max-w-[22rem] glow-card border border-slate-200">
                   <p class="font-semibold text-slate-900">Rechtstreeks contact met Ben</p>
                   <p class="text-sm text-slate-600 mt-1">Stuur een e-mail naar <a href="mailto:ben@webtalk.be" class="text-brand underline underline-offset-2">ben@webtalk.be</a></p>
                 </div>
@@ -415,8 +509,125 @@
     btn?.addEventListener('click', () => {
       menu.classList.toggle('hidden');
     });
+
     // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll progress bar
+    const progressEl = document.getElementById('scrollProgress');
+    const setProgress = () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop || document.body.scrollTop);
+      const height = (h.scrollHeight - h.clientHeight);
+      const pct = height ? (scrolled / height) * 100 : 0;
+      progressEl && (progressEl.style.width = pct + '%');
+    };
+    window.addEventListener('scroll', setProgress, { passive: true });
+    window.addEventListener('load', setProgress);
+
+    // Typewriter / rotating claims
+    const tw = document.getElementById('tw');
+    (function runTypewriter() {
+      if (!tw) return;
+      const phrases = [
+        'Snel online, zonder gedoe',
+        'Veilig & bliksemsnel',
+        '100% ontzorgd, van A tot Z',
+        'Conversiegericht webdesign'
+      ];
+      let i = 0, j = 0, dir = 1; // dir: 1 typing, -1 deleting
+      let current = phrases[0];
+      const tick = () => {
+        if (!tw) return;
+        tw.textContent = current.slice(0, j) + (j < current.length && dir === 1 ? '|' : '');
+        if (dir === 1) {
+          if (j < current.length) { j++; }
+          else { dir = -1; setTimeout(tick, 1200); return; }
+        } else {
+          if (j > 0) { j--; }
+          else { dir = 1; i = (i + 1) % phrases.length; current = phrases[i]; }
+        }
+        setTimeout(tick, dir === 1 ? 30 : 16);
+      };
+      tick();
+    })();
+
+    // Parallax for hero image
+    const hero = document.querySelector('section.relative.overflow-hidden');
+    hero?.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / rect.width;
+      const dy = (e.clientY - cy) / rect.height;
+      hero.querySelectorAll('[data-parallax]').forEach(el => {
+        const speed = parseFloat(el.getAttribute('data-speed') || '6');
+        el.style.transform = `translate(${dx * speed}px, ${dy * speed}px)`;
+      });
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in');
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+
+    // Choose elements to reveal
+    const toReveal = [
+      ...document.querySelectorAll('section[id] h2'),
+      ...document.querySelectorAll('.rounded-2xl, .rounded-xl, details.group, li.flex.items-start')
+    ];
+    toReveal.forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+
+    // Enhance all CTA buttons
+    document.querySelectorAll('a[href^="#contact"], a[href^="mailto:ben@webtalk.be"]').forEach(a => {
+      a.classList.add('btn-shine');
+    });
+
+    // Back to top button
+    const backBtn = document.createElement('button');
+    backBtn.id = 'backToTop';
+    backBtn.className = 'inline-flex items-center rounded-full bg-brand text-white shadow-lg hover:bg-brand-dark px-3 py-3';
+    backBtn.innerHTML = '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>';
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    document.body.appendChild(backBtn);
+    const toggleBackBtn = () => {
+      const show = window.scrollY > 600;
+      backBtn.classList.toggle('show', show);
+    };
+    window.addEventListener('scroll', toggleBackBtn, { passive: true });
+    window.addEventListener('load', toggleBackBtn);
+
+    // Confetti on CTA click
+    function confettiBurst(x, y) {
+      const colors = ['#2563eb', '#ea580c', '#10b981', '#f59e0b', '#a78bfa'];
+      for (let i = 0; i < 28; i++) {
+        const d = document.createElement('div');
+        d.className = 'confetti';
+        const c = colors[Math.floor(Math.random() * colors.length)];
+        d.style.background = c;
+        d.style.boxShadow = `0 0 0 1px ${c}22`;
+        const dx = (Math.random() - 0.5) * 160;
+        const dy = (Math.random() * 60) + 40;
+        d.style.setProperty('--x', x + 'px');
+        d.style.setProperty('--y', y + 'px');
+        d.style.setProperty('--dx', dx + 'px');
+        d.style.setProperty('--dy', dy + 'px');
+        document.body.appendChild(d);
+        setTimeout(() => d.remove(), 1300);
+      }
+    }
+    document.querySelectorAll('a[href^="#contact"], a[href^="mailto:"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const x = e.clientX || (window.innerWidth / 2);
+        const y = e.clientY || (window.innerHeight / 2);
+        confettiBurst(x, y);
+      }, { passive: true });
+    });
   </script>
 
   <!-- SEO structured data -->
