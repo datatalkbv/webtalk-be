@@ -12,6 +12,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Ctext x='50%25' y='54%25' font-size='40' text-anchor='middle' fill='white' font-family='Arial'%3EW%3C/text%3E%3C/svg%3E" />
   <link rel="canonical" href="https://webtalk.be/" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -139,9 +141,41 @@
       0%, 49% { opacity: 0.7; }
       50%, 100% { opacity: 0; }
     }
+  /* Accessibility: Skip link */
+    .skip-link {
+      position: absolute; left: 0; top: -40px;
+      background: #1e40af; color: #fff; padding: 8px 12px; border-radius: 0 0 8px 0;
+      z-index: 100; transition: top 200ms ease;
+    }
+    .skip-link:focus { top: 0; outline: 2px solid #93c5fd; }
+
+    /* Sticky mobile CTA bar */
+    #stickyCta {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    /* Toast for copy feedback */
+    .toast {
+      position: fixed; left: 50%; bottom: calc(1rem + env(safe-area-inset-bottom));
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(2,6,23,0.9); color: #fff; padding: 8px 12px; border-radius: 8px;
+      box-shadow: 0 10px 20px rgba(2,6,23,0.3); opacity: 0; transition: opacity 200ms ease, transform 200ms ease;
+      z-index: 60; font-size: 0.875rem;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-play-state: paused !important; animation: none !important; transition: none !important; }
+      .mesh-bg, .blob, .float-slow, #scrollProgress { animation: none !important; }
+      .btn-shine::before { display: none !important; }
+      .confetti { display: none !important; }
+    }
   </style>
 </head>
 <body class="antialiased text-slate-800 bg-white">
+  <a href="#top" class="skip-link">Sla naar hoofdinhoud</a>
   <!-- Header / Nav -->
   <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -159,8 +193,8 @@
             Contacteer Ben
           </a>
         </nav>
-        <button id="mobileMenuBtn" class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-100" aria-label="Open menu">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button id="mobileMenuBtn" class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-100" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -235,7 +269,7 @@
             <div class="relative">
               <div class="h-96 sm:h-[32rem]"></div>
               <div class="absolute bottom-6 right-6 w-40 h-40 rounded-full bg-gradient-to-tr from-brand/20 to-cta/20 blur-2xl z-[5]"></div>
-              <img src="ben.png" alt="Ben van Webtalk.be" data-parallax data-speed="8" class="absolute bottom-0 right-0 sm:right-4 h-96 sm:h-[32rem] w-auto object-contain drop-shadow-xl pointer-events-none select-none z-10 float-slow will-change-transform" />
+              <img src="ben.png" alt="Ben van Webtalk.be" data-parallax data-speed="8" decoding="async" fetchpriority="high" loading="eager" class="absolute bottom-0 right-0 sm:right-4 h-96 sm:h-[32rem] w-auto object-contain drop-shadow-xl pointer-events-none select-none z-10 float-slow will-change-transform" />
               <div class="absolute inset-0 p-4 sm:p-6 flex items-end z-20">
                 <div class="bg-white/90 backdrop-blur rounded-lg p-3 sm:p-4 shadow max-w-[22rem] glow-card border border-slate-200">
                   <p class="font-semibold text-slate-900">Rechtstreeks contact met Ben</p>
@@ -356,6 +390,30 @@
 
     
 
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl font-bold tracking-tight text-slate-900">Wat klanten zeggen</h2>
+          <p class="mt-3 text-slate-600">Echte resultaten, duidelijke communicatie.</p>
+        </div>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <figure class="rounded-2xl border border-slate-200 bg-white p-6 glow-card">
+            <blockquote class="text-slate-700">“Onze site stond in geen tijd online en voelt meteen professioneel aan. Wijzigingen stuur ik gewoon door via e-mail.”</blockquote>
+            <figcaption class="mt-4 text-sm text-slate-500">— Sarah, zaakvoerder</figcaption>
+          </figure>
+          <figure class="rounded-2xl border border-slate-200 bg-white p-6 glow-card">
+            <blockquote class="text-slate-700">“Super duidelijk proces en snelle opvolging. Ik heb eindelijk geen kopzorgen meer over hosting en updates.”</blockquote>
+            <figcaption class="mt-4 text-sm text-slate-500">— Tom, freelancer</figcaption>
+          </figure>
+          <figure class="rounded-2xl border border-slate-200 bg-white p-6 glow-card">
+            <blockquote class="text-slate-700">“Eén aanspreekpunt en alles via mail. Ideaal. Aanpassingen gebeuren snel en correct.”</blockquote>
+            <figcaption class="mt-4 text-sm text-slate-500">— Lotte, kmo</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
     <!-- Pricing -->
     <section id="pricing" class="py-16 sm:py-20">
@@ -527,12 +585,22 @@
     </div>
   </footer>
 
+  <!-- Sticky mobile CTA -->
+  <div id="stickyCta" class="md:hidden bg-white/80 backdrop-blur border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <a href="mailto:ben@webtalk.be?subject=Nieuwe%20website%20via%20Webtalk.be" class="w-full inline-flex items-center justify-center rounded-md bg-cta px-6 py-3 text-white font-semibold shadow hover:bg-cta-dark btn-shine">
+        Mail naar Ben: ben@webtalk.be
+      </a>
+    </div>
+  </div>
+
   <script>
     // Mobile menu toggle
     const btn = document.getElementById('mobileMenuBtn');
     const menu = document.getElementById('mobileMenu');
     btn?.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+      const isHidden = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!isHidden));
     });
 
     // Year in footer
@@ -549,6 +617,9 @@
     };
     window.addEventListener('scroll', setProgress, { passive: true });
     window.addEventListener('load', setProgress);
+
+    // Reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Typewriter / rotating claims (stable, no layout shift)
     const tw = document.getElementById('tw');
@@ -593,19 +664,33 @@
       tick();
     })();
 
-    // Parallax for hero image
+    // Parallax for hero image (disabled for reduced motion or non-fine pointer)
     const hero = document.querySelector('section.relative.overflow-hidden');
-    hero?.addEventListener('mousemove', (e) => {
-      const rect = hero.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const dx = (e.clientX - cx) / rect.width;
-      const dy = (e.clientY - cy) / rect.height;
-      hero.querySelectorAll('[data-parallax]').forEach(el => {
-        const speed = parseFloat(el.getAttribute('data-speed') || '6');
-        el.style.transform = `translate(${dx * speed}px, ${dy * speed}px)`;
+    if (hero && !prefersReducedMotion && window.matchMedia('(pointer:fine)').matches) {
+      let rafId = null;
+      let targetDx = 0, targetDy = 0, curDx = 0, curDy = 0;
+
+      const animate = () => {
+        curDx += (targetDx - curDx) * 0.12;
+        curDy += (targetDy - curDy) * 0.12;
+        hero.querySelectorAll('[data-parallax]').forEach(el => {
+          const speed = parseFloat(el.getAttribute('data-speed') || '6');
+          el.style.transform = `translate(${curDx * speed}px, ${curDy * speed}px)`;
+        });
+        rafId = requestAnimationFrame(animate);
+      };
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        targetDx = (e.clientX - cx) / rect.width;
+        targetDy = (e.clientY - cy) / rect.height;
+        if (!rafId) rafId = requestAnimationFrame(animate);
+      }, { passive: true });
+      hero.addEventListener('mouseleave', () => {
+        targetDx = 0; targetDy = 0;
       });
-    });
+    }
 
     // Reveal on scroll
     const observer = new IntersectionObserver((entries) => {
@@ -643,10 +728,12 @@
     window.addEventListener('scroll', toggleBackBtn, { passive: true });
     window.addEventListener('load', toggleBackBtn);
 
-    // Confetti on CTA click
+    // Confetti on CTA click (respects reduced motion)
     function confettiBurst(x, y) {
+      if (prefersReducedMotion) return;
       const colors = ['#2563eb', '#ea580c', '#10b981', '#f59e0b', '#a78bfa'];
-      for (let i = 0; i < 28; i++) {
+      const pieces = window.innerWidth < 640 ? 14 : 28;
+      for (let i = 0; i < pieces; i++) {
         const d = document.createElement('div');
         d.className = 'confetti';
         const c = colors[Math.floor(Math.random() * colors.length)];
@@ -669,18 +756,84 @@
         confettiBurst(x, y);
       }, { passive: true });
     });
+
+    // Copy email on double click and show toast
+    function showToast(msg) {
+      let t = document.getElementById('toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.id = 'toast';
+        t.className = 'toast';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(showToast._h);
+      showToast._h = setTimeout(() => t.classList.remove('show'), 1600);
+    }
+
+    const emailLinks = document.querySelectorAll('a[href^="mailto:ben@webtalk.be"]');
+    emailLinks.forEach(a => {
+      a.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        navigator.clipboard?.writeText('ben@webtalk.be').then(() => {
+          showToast('E-mailadres gekopieerd');
+        });
+      });
+    });
   </script>
 
   <!-- SEO structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Webtalk.be",
-    "url": "https://webtalk.be/",
-    "logo": "https://webtalk.be/favicon.svg",
-    "sameAs": [],
-    "description": "Webtalk.be bouwt professionele websites voor kmo’s in Vlaanderen. Volledig ontzorgd met hosting, onderhoud, updates en support. Rechtstreeks contact met Ben."
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Webtalk.be",
+        "url": "https://webtalk.be/",
+        "logo": "https://webtalk.be/favicon.svg",
+        "sameAs": [],
+        "description": "Webtalk.be bouwt professionele websites voor kmo’s in Vlaanderen. Volledig ontzorgd met hosting, onderhoud, updates en support. Rechtstreeks contact met Ben."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Kan ik zelf teksten en foto’s aanpassen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Wij doen de aanpassingen voor jou. Stuur je wijzigingen naar ben@webtalk.be — geen CMS of logins nodig."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Zijn er verborgen kosten?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nee. Alles wat hierboven staat is inbegrepen. We communiceren helder en zonder verrassingen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hoe gebeurt de communicatie?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enkel via e-mail. Stuur je vragen en materiaal naar ben@webtalk.be."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wat kost een wijziging?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aanpassingen gebeuren aan €50/uur excl. btw. Mail je verzoek naar ben@webtalk.be."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </body>
